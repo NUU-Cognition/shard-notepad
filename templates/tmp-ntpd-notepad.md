@@ -34,6 +34,7 @@ template: tmp-ntpd-notepad
 >[!example] Agent Response
 >[Agent responds in callout format]
 
+
 [Conversation continues...]
 ```
 

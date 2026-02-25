@@ -36,10 +36,12 @@ User writes their thoughts here.
 >[!example] Agent Response
 >Agent responds in callout block.
 
+
 User adds more.
 
 >[!example] Agent Response
 >Conversation continues.
+
 ```
 
 ## File Structure
