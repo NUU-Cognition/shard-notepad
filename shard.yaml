@@ -1,10 +1,11 @@
+shard-spec: "0.1.0"
 version: "0.2.0"
 name: Notepad
 shorthand: ntpd
 description: Document-based brainstorming with individual notepad files
 
 install:
-  - source: (Dashboard) Notepads.md
+  - source: inst-ntpd-dashboard.md
     dest: Mesh/(Dashboard) Notepads.md
     once: true
 
