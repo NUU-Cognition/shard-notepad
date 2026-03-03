@@ -3,7 +3,7 @@ id: 5b0ecac0-a83d-430e-a42d-62c43b97b01c
 tags:
   - "#dashboard"
   - "#ntpd/dashboard"
-  - "#managed/plugin/ntpd"
+  - "#managed/shard/ntpd"
   - "#read-only"
 ---
 
@@ -12,8 +12,8 @@ function formatName(p) {
   return p.file.name.replace(/^\(Notepad\)\s*/, '');
 }
 
-// Only look in Mesh/Notepads/
-const notepads = dv.pages('#ntpd/notepad').where(p => p.file.path.startsWith('Mesh/Notepads/'));
+// Only look in Mesh/Types/Notepads/ — exclude branches and artifacts (derivatives)
+const notepads = dv.pages('#ntpd/notepad').where(p => p.file.path.startsWith('Mesh/Types/Notepads/') && !p.file.name.includes(' . '));
 
 // Active Notepads
 dv.header(1, "Active");
@@ -22,10 +22,9 @@ const active = notepads.where(p => p.status === 'active')
 if (active.length === 0) {
   dv.paragraph("*None*");
 } else {
-  dv.table(["Notepad", "Topic"],
+  dv.table(["Notepad"],
     active.map(p => [
-      dv.fileLink(p.file.path, false, formatName(p)),
-      p.topic ?? "—"
+      dv.fileLink(p.file.path, false, formatName(p))
     ])
   );
 }
@@ -37,11 +36,9 @@ const archived = notepads.where(p => p.status === 'archived')
 if (archived.length === 0) {
   dv.paragraph("*None*");
 } else {
-  dv.table(["Notepad", "Topic", "Artifacts"],
+  dv.table(["Notepad"],
     archived.map(p => [
-      dv.fileLink(p.file.path, false, formatName(p)),
-      p.topic ?? "—",
-      p["artifacts-created"] ? (Array.isArray(p["artifacts-created"]) ? p["artifacts-created"].join(", ") : p["artifacts-created"]) : "—"
+      dv.fileLink(p.file.path, false, formatName(p))
     ])
   );
 }

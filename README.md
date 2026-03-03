@@ -15,11 +15,16 @@ shard.yaml                        # Manifest
 init-ntpd.md                      # Init file — shard context
 skills/
   sk-ntpd-respond.md              # Continue conversation
+  sk-ntpd-branch.md               # Create a branch
+  sk-ntpd-attach.md               # Create an artifact derivative
+  sk-ntpd-cleanup.md              # Scan and tidy notepads
 workflows/
   wkfl-ntpd-start.md              # Create new notepad
+  wkfl-ntpd-continue.md           # Continue conversation across threads
   wkfl-ntpd-finish.md             # Archive and extract artifacts
 templates/
-  tmp-ntpd-notepad.md             # Notepad file template
+  tmp-ntpd-notepad-v1.0.md        # Notepad file template
+  tmp-ntpd-branch-v0.1.md         # Branch file template
 ```
 
 ## How It Works
