@@ -32,7 +32,8 @@ Create a new notepad and begin brainstorming.
 
 1. Respond to the topic/initial message using [[sk-ntpd-respond]]
 2. The response goes under `# 1` as a `>[!example] Agent Response` callout
-3. The workflow remains active — any subsequent terminal messages are appended to the notepad under the next section heading before the agent responds
+3. Create the `#2` section making it ready for user to respond
+4. The workflow remains active — any subsequent terminal messages are appended to the notepad under the next section heading before the agent responds
 
 # Terminal Integration
 
