@@ -14,8 +14,8 @@ Respond to a single notepad file or branch. Called by [[wkfl-ntpd-continue]] for
 3. If the user wrote new text without a `# N` heading, add the next heading first
 4. If the user already wrote a heading, use it
 5. Append the `>[!example] Agent Response` callout below the user text
-6. Always leave two blank lines after the response
-7. If the response requires internal actions (creating files, running commands, etc.), execute them as nested operations — do the action, then report in the response
+6. If the response requires internal actions (creating files, running commands, etc.), execute them as nested operations — do the action, then report in the response
+7. Append the next `#N` heading (and two new lines) after your reply making it ready for user to continue
 
 # Section Ordering
 
