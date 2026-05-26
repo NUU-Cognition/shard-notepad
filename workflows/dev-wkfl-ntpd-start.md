@@ -1,3 +1,5 @@
+> [!important] THIS FILE IS AN INSTRUCTION. WHEN REFERENCED IT IS MEANT TO BE TAKEN AS AN ACTION.
+
 This workflow belongs to the Notepad shard. Ensure you have @init-ntpd.md in context before continuing.
 
 # Workflow: Start Notepad
@@ -14,7 +16,7 @@ Create a new notepad and begin brainstorming.
 ## Stage 1: Create Notepad
 
 1. Get the next notepad number with `flint helper type newnumber Notepad`
-2. Create the notepad using [[tmp-ntpd-notepad-v1.0]] with:
+2. Create the notepad using [[dev-tmp-ntpd-notepad-v1.0]] with:
    - Numbered filename: `(Notepad) XXX Topic Name.md`
    - Status: `active`
    - First section heading: `# 1`
@@ -30,17 +32,17 @@ Create a new notepad and begin brainstorming.
 
 ## Stage 3: Begin Conversation
 
-1. Respond to the topic/initial message using [[sk-ntpd-respond]]
+1. Respond to the topic/initial message using [[dev-sk-ntpd-respond]]
 2. The response goes under `# 1` as a `>[!example] Agent Response` callout
-3. Create the `#2` section making it ready for user to respond
+3. Create the `# 2` section making it ready for user to respond
 4. The workflow remains active — any subsequent terminal messages are appended to the notepad under the next section heading before the agent responds
 
 # Terminal Integration
 
 While this workflow is active:
 - User messages typed in the terminal are appended to the notepad under the next `# N` heading
-- The agent then responds using [[wkfl-ntpd-continue]]
-- This continues until the user explicitly ends the conversation or runs `wkfl-ntpd-finish`
+- The agent then responds using [[dev-wkfl-ntpd-continue]]
+- This continues until the user explicitly ends the conversation or runs `dev-wkfl-ntpd-finish`
 
 # Output
 

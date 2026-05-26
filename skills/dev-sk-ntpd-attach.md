@@ -1,3 +1,5 @@
+> [!important] THIS FILE IS AN INSTRUCTION. WHEN REFERENCED IT IS MEANT TO BE TAKEN AS AN ACTION.
+
 # Skill: Attach
 
 Create an artifact derivative of a notepad.
@@ -25,7 +27,7 @@ Create an artifact derivative of a notepad.
 - Artifacts are any typed output that deserves its own file
 - Use descriptive types: `(Spec)`, `(Sketch)`, `(Draft)`, `(Diagram)`, `(Snippet)`, `(List)`, etc.
 - Artifacts don't have the numbered section / callout conversation format — they're just documents
-- On `wkfl-ntpd-finish`, artifacts may be promoted to standalone files or absorbed into Session Output
+- On `dev-wkfl-ntpd-finish`, artifacts may be promoted to standalone files or absorbed into Session Output
 
 # Output
 

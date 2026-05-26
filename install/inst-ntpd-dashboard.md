@@ -12,33 +12,34 @@ function formatName(p) {
   return p.file.name.replace(/^\(Notepad\)\s*/, '');
 }
 
-// Only look in Mesh/Types/Notepads/ — exclude branches and artifacts (derivatives)
-const notepads = dv.pages('#ntpd/notepad').where(p => p.file.path.startsWith('Mesh/Types/Notepads/') && !p.file.name.includes(' . '));
+const notepads = dv.pages('#ntpd/notepad');
 
-// Active Notepads
+// Active Notepads (Mesh/Types/Notepads/)
 dv.header(1, "Active");
-const active = notepads.where(p => p.status === 'active')
+const active = notepads.where(p => p.status === 'active' && p.file.path.startsWith('Mesh/Types/Notepads/'))
   .array().sort((a, b) => b.file.name.localeCompare(a.file.name));
 if (active.length === 0) {
   dv.paragraph("*None*");
 } else {
-  dv.table(["Notepad"],
+  dv.table(["Notepad", "Artifacts"],
     active.map(p => [
-      dv.fileLink(p.file.path, false, formatName(p))
+      dv.fileLink(p.file.path, false, formatName(p)),
+      p["artifacts-created"] ? (Array.isArray(p["artifacts-created"]) ? p["artifacts-created"].join(", ") : p["artifacts-created"]) : "—"
     ])
   );
 }
 
-// Archived Notepads
+// Archived Notepads (Mesh/Archive/Notepads/)
 dv.header(1, "Archived");
-const archived = notepads.where(p => p.status === 'archived')
+const archived = notepads.where(p => p.status === 'archived' || p.file.path.startsWith('Mesh/Archive/Notepads/'))
   .array().sort((a, b) => b.file.name.localeCompare(a.file.name));
 if (archived.length === 0) {
   dv.paragraph("*None*");
 } else {
-  dv.table(["Notepad"],
+  dv.table(["Notepad", "Artifacts"],
     archived.map(p => [
-      dv.fileLink(p.file.path, false, formatName(p))
+      dv.fileLink(p.file.path, false, formatName(p)),
+      p["artifacts-created"] ? (Array.isArray(p["artifacts-created"]) ? p["artifacts-created"].join(", ") : p["artifacts-created"]) : "—"
     ])
   );
 }

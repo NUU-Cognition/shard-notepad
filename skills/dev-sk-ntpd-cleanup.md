@@ -1,4 +1,6 @@
-This skill belongs to the Notepad shard. Ensure you have [[init-ntpd]] in context before continuing.
+> [!important] THIS FILE IS AN INSTRUCTION. WHEN REFERENCED IT IS MEANT TO BE TAKEN AS AN ACTION.
+
+This skill belongs to the Notepad shard. Ensure you have [[dev-init-ntpd]] in context before continuing.
 
 # Skill: Cleanup Notepads
 
@@ -10,7 +12,7 @@ Scan all notepads, identify stale or broken artifacts, and tidy them up with use
 
 # Actions
 
-1. **Read template.** Read [[tmp-ntpd-notepad-v1.0]] to understand the canonical frontmatter schema, required tags, and valid status values.
+1. **Read template.** Read [[dev-tmp-ntpd-notepad-v1.0]] to understand the canonical frontmatter schema, required tags, and valid status values.
 
 2. **Scan.** Read the YAML frontmatter (only) of every file in `Mesh/Types/Notepads/` matching `(Notepad) *.md`.
 
@@ -21,7 +23,9 @@ Scan all notepads, identify stale or broken artifacts, and tidy them up with use
    - **Non-UUID IDs:** `id` is not a valid UUID v4
    - **Missing/wrong tags:** tags don't match what the template requires
    - **Empty fields:** fields that exist but have no value (e.g. `increment:` with nothing after it) — either populate or remove
-   - **Missing template field:** no `template: "[[tmp-ntpd-notepad-v1.0]]"` in frontmatter
+   - **Missing template field:** no `template: "[[dev-tmp-ntpd-notepad-v1.0]]"` in frontmatter
+   - **Stale branch references:** frontmatter contains `branches:` field (legacy) — should be migrated to `forks:` or removed
+   - **Orphaned fork links:** `forks:` or `forked-from:` references that point to nonexistent files
 
 4. **Report.** Present findings to the user as a table:
    ```
@@ -32,11 +36,12 @@ Scan all notepads, identify stale or broken artifacts, and tidy them up with use
 5. **Ask.** Ask the user which items to fix and which to archive. Wait for confirmation.
 
 6. **Fix.** For each confirmed action:
-   - **Archive:** Add `#archived` to tags, then move file to `Mesh/Archive/Notepads/`
+   - **Archive:** Update status to `archived`, then move file to `Mesh/Archive/Notepads/`
    - **Fix ID:** Generate a new UUID v4 and replace the invalid one
    - **Fix tags:** Update tags to match the template
    - **Fix status:** Replace invalid status with a valid value from the template
    - **Fix empty fields:** Remove empty field lines, or populate if user specifies
+   - **Migrate branches:** Rename `branches:` to `forks:` if the linked files are forks, or remove if they were branches (now deleted concept)
 
 # Output
 
