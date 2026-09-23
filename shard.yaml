@@ -1,11 +1,14 @@
 shard-spec: "0.3.0"
 id: 76d64e3e-3c05-4391-a39e-22001fb2e20a
+org: nuu-cognition
+source:
+  id: c2e2fef6-0b0e-4933-bac8-8b99a458de30
 version: "0.2.0"
 name: Notepad
 shorthand: ntpd
 description: Document-based brainstorming with forking, inline editing, and action execution
 dependencies:
-  - source: NUU-Cognition/shard-flint
+  "@nuu-cognition/flint": ""
 
 types:
   - name: Notepad
