@@ -13,7 +13,7 @@ forks:
 artifacts:
 [agent]-sessions:
 template: "[[dev-tmp-ntpd-notepad-v1.0]]"
-authors: /* from .flint/identity.json; omit if no identity set */
+authors: /* from flint whoami (the machine-global Name); omit if no Name is set */
   - "[[@Person Name]]"
 ---
 
