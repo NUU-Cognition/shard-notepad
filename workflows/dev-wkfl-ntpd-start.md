@@ -11,7 +11,7 @@ Create a new notepad and begin brainstorming.
 You can run this workflow as a shard invocation. The invocation is a durable record of the notepad: its steps, its output, and the tasks that start inside it. The stages below do not change.
 
 - Start the workflow with `flint shard invoke ntpd start --input topic="<topic>"`.
-- After Stage 1, set the output: `flint shard invocations set-output notepad="(Notepad) NNN Title"`.
+- After Stage 1, set the output: `flint shard invocations set-output <id> notepad="(Notepad) NNN Title"`. The hint after each write prints the command with the id of the invocation.
 - Mark each step when it is done: `flint shard step done <step> --evidence "<…>"`. The steps are `create`, `gather`, `converse`, and `finish`. `flint shard step` shows the current step.
 - Each turn of the conversation stays inside the `converse` step. The step repeats: mark it done only when the person ends the conversation.
 - When a turn asks for work, the work runs as a child invocation: `flint shard invoke proj create_and_do_task`. The task opens inside the notepad, with no flag. When the task closes, the notepad is the current frame again.
