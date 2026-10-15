@@ -22,6 +22,8 @@ Continue an active notepad conversation. This is the entry point for the `contin
 4. Respond using [[dev-sk-ntpd-respond]] in the appropriate mode
 5. If `--confirm` mode: present the intended response/action, wait for approval, then write
 
+With an open notepad invocation (`flint shard invoke ntpd start`), each turn belongs to its `converse` step. `flint shard step` shows it. Work that the turn asks for runs as a child invocation: `flint shard invoke proj create_and_do_task`.
+
 # Terminal Integration
 
 While a notepad session is active:

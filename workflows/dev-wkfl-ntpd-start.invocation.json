@@ -1,0 +1,66 @@
+{
+  "format": "shard-invocation/0.2",
+  "workflow": "wkfl-ntpd-start",
+  "title": "Start Notepad",
+  "inputs": {
+    "topic": {
+      "kind": "text",
+      "required": true,
+      "description": "The topic of the notepad, for example \"Shard Invocations\"."
+    }
+  },
+  "outputs": {
+    "notepad": {
+      "kind": "artifact",
+      "type": "Notepad",
+      "required": true,
+      "description": "The notepad, for example \"(Notepad) 107 Shard Invocations\". Set it after Stage 1."
+    }
+  },
+  "steps": [
+    {
+      "id": "create",
+      "title": "Create Notepad",
+      "by": "agent",
+      "evidence": "required",
+      "stage": "Stage 1: Create Notepad",
+      "next": "Create the notepad on {{topic}}. Then set the output: flint shard invocations set-output notepad=\"(Notepad) NNN Title\"."
+    },
+    {
+      "id": "gather",
+      "title": "Gather Context",
+      "by": "agent",
+      "evidence": "optional",
+      "stage": "Stage 2: Gather Context",
+      "next": "Find the context of {{topic}} in the Flint and in the codebases that it names."
+    },
+    {
+      "id": "converse",
+      "title": "Conversation",
+      "by": "agent",
+      "evidence": "optional",
+      "stage": "Stage 3: Begin Conversation",
+      "repeat": true,
+      "next": "Answer each turn under the next # N of {{output.notepad}} with wkfl-ntpd-continue. When a turn asks for work, invoke the task as a child. When the person ends the conversation, mark this step done.",
+      "calls": [
+        { "shard": "proj", "workflow": "create_and_do_task" }
+      ]
+    },
+    {
+      "id": "finish",
+      "title": "Finish Notepad",
+      "by": "agent",
+      "evidence": "required",
+      "stage": "Stage 4: Finish",
+      "next": "Run wkfl-ntpd-finish on {{output.notepad}}: extract the artifacts, write the Session Output, and archive the notepad."
+    }
+  ],
+  "behaviours": [
+    {
+      "id": "notepad-open-hint",
+      "on": "session.close",
+      "phase": "before",
+      "say": "The notepad on {{topic}} is still open (invocation {{invocation}}). To finish it, run wkfl-ntpd-finish before the close. A later session can continue it with wkfl-ntpd-continue."
+    }
+  ]
+}
