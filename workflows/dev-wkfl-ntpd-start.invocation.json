@@ -24,7 +24,7 @@
       "by": "agent",
       "evidence": "required",
       "stage": "Stage 1: Create Notepad",
-      "next": "Create the notepad on {{topic}}. Then set the output: flint shard invocations set-output {{invocation}} notepad=\"(Notepad) NNN Title\"."
+      "next": "Create the notepad on {{topic}}. Then set the output: flint shard invocations set-output {{invocation}} notepad='(Notepad) NNN Title'."
     },
     {
       "id": "gather",
